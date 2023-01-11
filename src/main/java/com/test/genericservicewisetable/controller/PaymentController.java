@@ -1,15 +1,12 @@
 package com.test.genericservicewisetable.controller;
 
-import com.test.genericservicewisetable.entity.MobileRecharge;
-import com.test.genericservicewisetable.entity.PayBill;
-import com.test.genericservicewisetable.service.MobileRechargeService;
-import com.test.genericservicewisetable.service.PayBillService;
+import com.test.genericservicewisetable.entity.CardPayment;
+import com.test.genericservicewisetable.entity.PointToPoint;
+import com.test.genericservicewisetable.service.CardPaymentService;
+import com.test.genericservicewisetable.service.PointToPointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,27 +14,33 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PaymentController {
 
-    private final PayBillService payBillService;
-    private final MobileRechargeService mobileRechargeService;
+    private final PointToPointService pointToPointService;
 
-    @PostMapping("service/pay-bill")
-    public ResponseEntity savePayBill(@RequestBody PayBill payBill){
-        return ResponseEntity.ok(payBillService.save(payBill));
+    private final CardPaymentService cardPaymentService;
+
+    @PostMapping("service/p2p")
+    public ResponseEntity savePayBill(@RequestBody PointToPoint PointToPoint){
+        return ResponseEntity.ok(pointToPointService.save(PointToPoint));
     }
 
-    @GetMapping("service/pay-bill")
-    public List<PayBill> getAllPayBill(){
-        return payBillService.findAll();
+    @GetMapping("service/p2ps")
+    public List<PointToPoint> getAllP2PPayments(){
+        return pointToPointService.findAll();
     }
 
 
-    @PostMapping("service/mobile-recharge")
-    public ResponseEntity saveMobileRecharge(@RequestBody MobileRecharge mobileRecharge){
-        return ResponseEntity.ok(mobileRechargeService.save(mobileRecharge));
+    @PostMapping("service/card-payment")
+    public ResponseEntity saveCardPayment(@RequestBody CardPayment cardPayment){
+        return ResponseEntity.ok(cardPaymentService.save(cardPayment));
     }
 
-    @GetMapping("service/mobile-recharges")
-    public List<MobileRecharge> getAllMobileRecharges(){
-        return mobileRechargeService.findAll();
+    @GetMapping("service/card-payments")
+    public List<CardPayment> getAllCardPayments(){
+        return cardPaymentService.findAll();
+    }
+
+    @GetMapping("service/card-payment/{cardType}")
+    public List<CardPayment> getAllCardPaymentByType(@PathVariable String cardType){
+        return cardPaymentService.findAllCardsByType(cardType);
     }
 }

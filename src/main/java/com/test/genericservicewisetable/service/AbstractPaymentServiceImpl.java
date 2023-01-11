@@ -25,7 +25,7 @@ public abstract class AbstractPaymentServiceImpl<T extends AbstractPaymentEntity
 
     @Override
     public T save(T entity) {
-        return abstractPaymentRepo.save(entity);
+        return (T) abstractPaymentRepo.save(entity);
     }
 
     @Override

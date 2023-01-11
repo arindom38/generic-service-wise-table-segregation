@@ -2,7 +2,6 @@ package com.test.genericservicewisetable.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -24,10 +23,9 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    @CreatedDate
-    protected LocalDateTime createdAt;
 
-    @LastModifiedDate
-    protected LocalDate modifyAt;
+    protected LocalDateTime createdAt = LocalDateTime.now();
+
+    protected LocalDateTime modifyAt = LocalDateTime.now();
 
 }
