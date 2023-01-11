@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class CardPaymentServiceImpl extends AbstractPaymentServiceImpl<CardPayment,Long> implements CardPaymentService{
 
-    private  CardPaymentRepo cardPaymentRepo;
+    private  final CardPaymentRepo cardPaymentRepo;
 
     public CardPaymentServiceImpl(CardPaymentRepo cardPaymentRepo) {
         super(cardPaymentRepo);
