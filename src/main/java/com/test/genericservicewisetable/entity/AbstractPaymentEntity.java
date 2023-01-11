@@ -24,7 +24,6 @@ public class AbstractPaymentEntity extends BaseEntity{
     @NotNull
     private Long subscriptionId;
 
-    private Boolean firstPayment;
 
     @NotNull
     @JsonSerialize(using = CustomLocalDateSerializer.class)
@@ -39,16 +38,9 @@ public class AbstractPaymentEntity extends BaseEntity{
 
     private LocalDateTime trxTime;
 
-    private String reverseTrxId;
-
-
-    private LocalDateTime reverseTrxTime;
-
     @JsonSerialize(using = CustomLocalDateSerializer.class)
     @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     private LocalDate executionDate;
-
-    private BigDecimal reverseTrxAmount;
 
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
