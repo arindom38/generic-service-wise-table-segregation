@@ -11,5 +11,6 @@ public class PointToPointServiceImpl extends AbstractPaymentServiceImpl<PointToP
 
     public PointToPointServiceImpl(PointToPointRepo pointToPointRepo) {
         super(pointToPointRepo);
+        this.pointToPointRepo = pointToPointRepo;
     }
 }

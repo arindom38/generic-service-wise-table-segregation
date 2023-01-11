@@ -13,6 +13,7 @@ public class CardPaymentServiceImpl extends AbstractPaymentServiceImpl<CardPayme
 
     public CardPaymentServiceImpl(CardPaymentRepo cardPaymentRepo) {
         super(cardPaymentRepo);
+        this.cardPaymentRepo = cardPaymentRepo;
     }
 
     @Override

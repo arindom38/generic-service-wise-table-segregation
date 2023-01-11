@@ -39,7 +39,7 @@ public class PaymentController {
         return cardPaymentService.findAll();
     }
 
-    @GetMapping("service/card-payment/{cardType}")
+    @GetMapping("service/card-payments/{cardType}")
     public List<CardPayment> getAllCardPaymentByType(@PathVariable String cardType){
         return cardPaymentService.findAllCardsByType(cardType);
     }
